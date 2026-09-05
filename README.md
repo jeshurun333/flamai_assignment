@@ -1,13 +1,35 @@
-# AI Team Intern Assignment — The Audit
+# AI Team Intern Assignment — The Audit & R&D Parametric Curve Fitting
 
-**Candidate Submission**  
-**Repository:** Multilingual Tokenizer Audit, Capacity Reconciliation & Conversational Tone Adaptation  
+**Repository:** AI Team Audit & R&D Assignment Solution  
+**GitHub:** [https://github.com/jeshurun333/flamai_assignment](https://github.com/jeshurun333/flamai_assignment)  
 
 ---
 
-## Deliverables Index
+## 1. R&D Parametric Curve Fitting Solution (`xy_data.csv`)
 
-- **`NOTEBOOK.md`**: Chronological lab notebook detailing the complete inquiry trajectory: hypotheses, empirical experiments, results, dead ends, and revisions.
+### Desmos Calculator Link:
+👉 **[https://www.desmos.com/calculator/rfj91yrxob](https://www.desmos.com/calculator/rfj91yrxob)**
+
+### Extracted Parameter Values:
+- **$\theta = 30^\circ = \frac{\pi}{6} \approx 0.523599$ radians**
+- **$M = 0.03$**
+- **$X = 55.0$**
+- **L1 Loss:** $\approx 3.5 \times 10^{-6}$ (exact analytical fit)
+
+### Parametric Submission Equation (LaTeX format):
+```latex
+\left(t*\cos(0.5236)-e^{0.03\left|t\right|}\cdot\sin(0.3t)\sin(0.5236)+55,\ 42+t*\sin(0.5236)+e^{0.03\left|t\right|}\cdot\sin(0.3t)\cos(0.5236)\right)
+```
+*(Parameter range: $6 \le t \le 60$)*
+
+- **Solver Script:** [`solve_curve.py`](solve_curve.py)
+- **Detailed Solution Writeup:** [`RD_ASSIGNMENT_SOLUTION.md`](RD_ASSIGNMENT_SOLUTION.md)
+
+---
+
+## 2. AI Team Intern Assignment Deliverables (The Audit)
+
+- **`NOTEBOOK.md`**: Chronological lab notebook detailing hypotheses, empirical experiments, results, dead ends, and revisions.
 - **`AI_USAGE.md`**: Transparent disclosure of where AI assisted effectively and where it generated misleading hypotheses.
 - **`partA/`**:
   - `prepare_corpus.py`: Downloader and extractor for the 1,012-sentence parallel FLORES-200 evaluation corpus.
@@ -30,12 +52,15 @@
 ## Quickstart & Verification
 
 ```bash
-# 1. Verify Part A bug isolation & Evidence Rule numbers:
+# 1. Run R&D curve parameter solver:
+python solve_curve.py
+
+# 2. Verify Part A bug isolation & Evidence Rule numbers:
 python partA/audit_experiments.py
 
-# 2. Re-run multilingual tokenizer benchmark across 6 languages:
+# 3. Re-run multilingual tokenizer benchmark across 6 languages:
 python partA/run_analysis.py
 
-# 3. Verify Part B KV cache arithmetic and log reconciliation:
+# 4. Verify Part B KV cache arithmetic and log reconciliation:
 python partB/calculations.py
 ```
